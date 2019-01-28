@@ -19,7 +19,7 @@ type CandlesHistoryInfo struct {
 	Type      string    `json:"type"`
 }
 
-// CandlesHistoryResp is a response for ./Candles/history' EP.
+// CandlesHistoryResp is a response for '/Candles/history' EP.
 type CandlesHistoryResp struct {
 	CandlesHistoryInfo
 	Data []CandleData `json:"data"`
