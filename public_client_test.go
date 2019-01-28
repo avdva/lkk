@@ -22,6 +22,23 @@ func TestPublicAssetPairsDictionary(t *testing.T) {
 	r.NotEmpty(dict)
 }
 
+func TestPublicAssetPairsRates(t *testing.T) {
+	r := require.New(t)
+
+	p := NewPublic()
+
+	rate, err := p.AssetPairs().Rate("EURUSD")
+	r.NoError(err)
+	r.NotEmpty(rate.ID)
+	r.True(rate.Ask.Sign() > 0)
+	r.True(rate.Bid.Sign() > 0)
+
+	rates, err := p.AssetPairs().Rates()
+	r.NoError(err)
+	r.True(len(rates) > 0)
+
+}
+
 func TestPublicCandlesHistory(t *testing.T) {
 	r := require.New(t)
 
